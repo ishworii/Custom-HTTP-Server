@@ -3,7 +3,6 @@ package server
 
 case class Response(
                    statusCode : Int,
-                   statusMessage : String,
                    headers : Map[String,String],
                    body : String
                    ):
@@ -16,6 +15,7 @@ case class Response(
 private object Response{
     private val reasonPhrase = Map(
         200 -> "OK",
+        201 -> "Created",
         400 -> "Bad Request",
         404 -> "Not Found",
         500 -> "Internal Server Error"

@@ -78,26 +78,15 @@ object HttpServer {
 
     private def handleRequest(request: Request): Response = {
         request.method match{
-            case Method.GET => handleGet(request)
+            case Method.GET => Router.handle(request)
             case Method.POST => handlePost(request)
             case _ =>
                 Response(
                     statusCode = 400,
-                    statusMessage = "Bad Request",
                     headers = Map("Content-Type" -> "text/plain"),
                     body = "Unsupported HTTP request"
             )
         }
-    }
-
-    private def handleGet(request: Request): Response = {
-        val content = s"Handling GET request for path: ${request.path}"
-        Response(
-            statusCode = 200,
-            statusMessage = "OK",
-            headers = Map("Content-Type" -> "text/plain"),
-            body = content
-        )
     }
 
     private def handlePost(request: Request): Response = {
@@ -105,7 +94,6 @@ object HttpServer {
         val content = s"Handling POST request for path: ${request.path}, with body: $receivedBody"
         Response(
             statusCode = 201,
-            statusMessage = "Created",
             headers = Map("Content-Type" -> "text/plain"),
             body = content
         )

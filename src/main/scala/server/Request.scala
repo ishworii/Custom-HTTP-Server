@@ -28,7 +28,6 @@ object Method{
 case class Request(
                   method : Method,
                   path : String,
-                  protocol : String = "HTTP/1.1",
                   headers : Map[String,String],
                   body : Option[String]
                   )
@@ -53,7 +52,7 @@ object Request{
 //        println(body)
 
         Method.fromString(methodString) match{
-            case Some(method) => Right(Request(method,path, protocol = "HTTP/1.1", headers = headers, body = body))
+            case Some(method) => Right(Request(method,path, headers = headers, body = body))
             case None => Left(s"Invalid HTTP method:$methodString")
         }
     }
