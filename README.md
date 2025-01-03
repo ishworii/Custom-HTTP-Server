@@ -11,10 +11,10 @@ POST / -> acknowledges POST request with toy response
 2. Parse the request
 3. Handled basic GET and POST
 4. serve static files
+5. added more methods[GET,POST,PUT,DELETE]
 
 ## Things to add
 1. Better routing and parsing
 2. Dynamic route handling
 3. Middlewares??
 4. Authentication
-5. More HTTP methods??
